@@ -27,14 +27,22 @@ public class MenuLoop {
             menuTextRenderer.renderStartMenu();
 
             final String inputStringFromConsole = scanner.nextLine();
-            if (inputStringFromConsole.equals(Constants.EXIT_COMMAND)) {
+            if (isExit(inputStringFromConsole)) {
                 return;
-            } else if (inputStringFromConsole.equals(Constants.START_COMMAND)) {
+            } else if (isStart(inputStringFromConsole)) {
                 initAndStartGameLoop();
             } else {
                 menuTextRenderer.renderWrongCommand();
             }
         }
+    }
+
+    private boolean isExit(String inputStringFromConsole) {
+        return inputStringFromConsole.equals(Constants.EXIT_COMMAND);
+    }
+
+    private boolean isStart(String inputStringFromConsole) {
+        return inputStringFromConsole.equals(Constants.START_COMMAND);
     }
 
     private void initAndStartGameLoop() {
