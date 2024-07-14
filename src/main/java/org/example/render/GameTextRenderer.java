@@ -30,6 +30,7 @@ public class GameTextRenderer {
         System.out.println(Constants.HIDDEN_WORD_TEXT + hiddenWord.getWordWithMask());
         hangmanRenderer.render();
         System.out.println(Constants.ERRORS_LEFT_TEXT + (Constants.ERRORS_TO_LOSE - hiddenWord.getWrongChars().size()));
+        System.out.println(Constants.WRONG_LETTERS_TEXT + hiddenWord.getWrongChars());
         System.out.println(Constants.ENTER_LETTER_TEXT);
     }
 
