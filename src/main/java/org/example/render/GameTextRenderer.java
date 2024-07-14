@@ -16,22 +16,30 @@ public class GameTextRenderer {
     public void renderLostText() {
         hangmanRenderer.render();
         System.out.println(Constants.YOU_LOST_TEXT);
-        System.out.println(Constants.HIDDEN_WORD_TEXT + hiddenWord.getWord());
+        printHiddenWordText(hiddenWord.getWord());
     }
 
     public void renderWonText() {
-        System.out.println(Constants.HIDDEN_WORD_TEXT + hiddenWord.getWordWithMask());
+        printHiddenWordText(hiddenWord.getWordWithMask());
         hangmanRenderer.render();
         System.out.println(Constants.YOU_WON_TEXT);
-        System.out.println(Constants.ERRORS_LEFT_TEXT + (Constants.ERRORS_TO_LOSE - hiddenWord.getErrorsCount()));
+        printErrorsLeftText();
     }
 
     public void renderGuessCharText() {
-        System.out.println(Constants.HIDDEN_WORD_TEXT + hiddenWord.getWordWithMask());
+        printHiddenWordText(hiddenWord.getWordWithMask());
         hangmanRenderer.render();
-        System.out.println(Constants.ERRORS_LEFT_TEXT + (Constants.ERRORS_TO_LOSE - hiddenWord.getErrorsCount()));
+        printErrorsLeftText();
         System.out.println(Constants.WRONG_LETTERS_TEXT + hiddenWord.getWrongChars());
         System.out.println(Constants.ENTER_LETTER_TEXT);
+    }
+
+    private void printErrorsLeftText() {
+        System.out.println(Constants.ERRORS_LEFT_TEXT + (Constants.ERRORS_TO_LOSE - hiddenWord.getErrorsCount()));
+    }
+
+    private void printHiddenWordText(final String word) {
+        System.out.println(Constants.HIDDEN_WORD_TEXT + word);
     }
 
     public void renderInvalidCharText() {
