@@ -42,4 +42,8 @@ public class HiddenWord {
     public Set<Character> getWrongChars() {
         return wrongChars;
     }
+
+    public int getErrorsCount() {
+        return wrongChars.size();
+    }
 }

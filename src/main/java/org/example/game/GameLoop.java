@@ -51,7 +51,7 @@ public class GameLoop {
     }
 
     private boolean isLost(HiddenWord hiddenWord) {
-        return hiddenWord.getWrongChars().size() == Constants.ERRORS_TO_LOSE;
+        return hiddenWord.getErrorsCount() == Constants.ERRORS_TO_LOSE;
     }
 
     private boolean isWon(HiddenWord hiddenWord) {

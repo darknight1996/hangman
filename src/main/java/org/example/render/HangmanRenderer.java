@@ -22,7 +22,7 @@ public class HangmanRenderer {
     }
 
     public void render() {
-        System.out.println(errorsCountToStageMap.get(hiddenWord.getWrongChars().size()).getContent());
+        System.out.println(errorsCountToStageMap.get(hiddenWord.getErrorsCount()).getContent());
     }
 
     public enum Stage {
