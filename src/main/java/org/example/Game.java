@@ -8,7 +8,7 @@ import org.example.render.MenuTextRenderer;
 import org.example.repository.impl.WordsRepositoryInFile;
 import org.example.service.WordService;
 import org.example.service.impl.WordServiceDefaultImpl;
-import org.example.validator.CharValidator;
+import org.example.validator.Validator;
 
 import java.util.Scanner;
 
@@ -44,19 +44,19 @@ public class Game {
         final HiddenWord hiddenWord = new HiddenWord(wordService.getRandomWord());
         final HangmanRenderer hangmanRenderer = new HangmanRenderer(hiddenWord);
         final GameTextRenderer gameTextRenderer = new GameTextRenderer(hiddenWord, hangmanRenderer);
-        final CharValidator charValidator = new CharValidator();
+        final Validator validator = new Validator();
 
         while (true) {
             gameTextRenderer.renderGuessCharText();
 
             final String inputStringFromConsole = scanner.nextLine().toLowerCase();
-            if (inputStringFromConsole.length() != 1) {
+            if (!validator.isSingleLetter(inputStringFromConsole)) {
                 gameTextRenderer.renderInvalidInputStringText();
                 continue;
             }
 
             final char inputChar = inputStringFromConsole.charAt(0);
-            if (charValidator.isValid(inputChar)) {
+            if (validator.isValidChar(inputChar)) {
                 hiddenWord.tryToGuess(inputChar);
             } else {
                 gameTextRenderer.renderInvalidCharText();

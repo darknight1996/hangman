@@ -19,4 +19,5 @@ public class Constants {
     public static final String INVALID_CHARACTER_TEXT = "Invalid character, try again";
     public static final String INVALID_INPUT_STRING_TEXT = "Input must be single character, try again";
     public static final String ENTER_LETTER_TEXT = "Enter the letter: ";
+    public static final String WRONG_LETTERS_TEXT = "Wrong letters: ";
 }
