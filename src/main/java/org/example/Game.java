@@ -1,31 +1,77 @@
 package org.example;
 
+import org.example.constants.Constants;
+import org.example.model.HiddenWord;
+import org.example.render.GameTextRenderer;
+import org.example.render.HangmanRenderer;
+import org.example.render.MenuTextRenderer;
+import org.example.repository.impl.WordsRepositoryInFile;
+import org.example.service.WordService;
+import org.example.service.impl.WordServiceDefaultImpl;
+import org.example.validator.CharValidator;
+
 import java.util.Scanner;
 
 public class Game {
-    private static final String START = "s";
-    private static final String EXIT = "e";
+    private final Scanner scanner;
 
-    public void start() {
-        startMenuLoop();
+    public Game() {
+        scanner = new Scanner(System.in);
     }
 
-    private void startMenuLoop() {
+    public void start() {
+        menuLoop();
+    }
+
+    private void menuLoop() {
+        final MenuTextRenderer menuTextRenderer = new MenuTextRenderer();
         while (true) {
-            System.out.println("Type [s] to start the game or [e] to exit");
-            Scanner scanner = new Scanner(System.in);
-            String inputStringFromConsole = scanner.nextLine();
-            if (inputStringFromConsole.equals(EXIT)) {
+            menuTextRenderer.renderStartMenu();
+
+            final String inputStringFromConsole = scanner.nextLine();
+            if (inputStringFromConsole.equals(Constants.EXIT_COMMAND)) {
                 return;
-            } else if (inputStringFromConsole.equals(START)) {
-                startGameLoop();
+            } else if (inputStringFromConsole.equals(Constants.START_COMMAND)) {
+                gameLoop();
             } else {
-                System.out.println("wrong command");
+                menuTextRenderer.renderWrongCommand();
             }
         }
     }
 
-    private void startGameLoop() {
-        System.out.println("game starting");
+    private void gameLoop() {
+        final WordService wordService = new WordServiceDefaultImpl(new WordsRepositoryInFile());
+        final HiddenWord hiddenWord = new HiddenWord(wordService.getRandomWord());
+        final HangmanRenderer hangmanRenderer = new HangmanRenderer(hiddenWord);
+        final GameTextRenderer gameTextRenderer = new GameTextRenderer(hiddenWord, hangmanRenderer);
+        final CharValidator charValidator = new CharValidator();
+
+        while (true) {
+            gameTextRenderer.renderGuessCharText();
+
+            final String inputStringFromConsole = scanner.nextLine().toLowerCase();
+            if (inputStringFromConsole.length() != 1) {
+                gameTextRenderer.renderInvalidInputStringText();
+                continue;
+            }
+
+            final char inputChar = inputStringFromConsole.charAt(0);
+            if (charValidator.isValid(inputChar)) {
+                hiddenWord.tryToGuess(inputChar);
+            } else {
+                gameTextRenderer.renderInvalidCharText();
+                continue;
+            }
+
+            if (hiddenWord.getWrongChars().size() == Constants.ERRORS_TO_LOSE) {
+                gameTextRenderer.renderLostText();
+                return;
+            }
+            if (!hiddenWord.getWordWithMask().contains(Constants.HIDDEN_CHAR_MASK)) {
+                gameTextRenderer.renderWonText();
+                return;
+            }
+        }
     }
+
 }
