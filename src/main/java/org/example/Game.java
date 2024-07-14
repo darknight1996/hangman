@@ -63,15 +63,23 @@ public class Game {
                 continue;
             }
 
-            if (hiddenWord.getWrongChars().size() == Constants.ERRORS_TO_LOSE) {
+            if (isLost(hiddenWord)) {
                 gameTextRenderer.renderLostText();
                 return;
             }
-            if (!hiddenWord.getWordWithMask().contains(Constants.HIDDEN_CHAR_MASK)) {
+            if (isWon(hiddenWord)) {
                 gameTextRenderer.renderWonText();
                 return;
             }
         }
+    }
+
+    private boolean isLost(HiddenWord hiddenWord) {
+        return hiddenWord.getWrongChars().size() == Constants.ERRORS_TO_LOSE;
+    }
+
+    private boolean isWon(HiddenWord hiddenWord) {
+        return !hiddenWord.getWordWithMask().contains(Constants.HIDDEN_CHAR_MASK);
     }
 
 }
