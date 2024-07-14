@@ -13,7 +13,10 @@ public class HangmanRenderer {
     public HangmanRenderer(HiddenWord hiddenWord) {
         this.hiddenWord = hiddenWord;
         errorsCountToStageMap = new HashMap<>();
+        initMap();
+    }
 
+    private void initMap() {
         int errorsCount = 0;
         for (Stage stage: Stage.values()) {
             errorsCountToStageMap.put(errorsCount, stage);
