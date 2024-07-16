@@ -5,29 +5,27 @@ import org.example.model.HiddenWord;
 
 public class GameContent {
 
-    private final HiddenWord hiddenWord;
     private final HangmanContent hangmanContent;
 
-    public GameContent(HiddenWord hiddenWord, HangmanContent hangmanContent) {
-        this.hiddenWord = hiddenWord;
+    public GameContent(HangmanContent hangmanContent) {
         this.hangmanContent = hangmanContent;
     }
 
-    public String getLostText(final int errorsCount) {
+    public String getLostText(final int errorsCount, final String hiddenWord) {
         return hangmanContent.getHangman(errorsCount) + "\n" +
             Constants.YOU_LOST_TEXT + "\n" +
-            getHiddenWordText((hiddenWord.getWord()));
+            getHiddenWordText((hiddenWord));
     }
 
-    public String getWonText(final int errorsCount) {
-        return getHiddenWordText(hiddenWord.getWordWithMask()) + "\n" +
+    public String getWonText(final int errorsCount, final String hiddenWordWithMask) {
+        return getHiddenWordText(hiddenWordWithMask) + "\n" +
             hangmanContent.getHangman(errorsCount) + "\n" +
             Constants.YOU_WON_TEXT + "\n" +
             getErrorsLeftText(errorsCount);
     }
 
-    public String getGuessCharText(final int errorsCount, String wrongChars) {
-        return getHiddenWordText(hiddenWord.getWordWithMask()) + "\n" +
+    public String getGuessCharText(final int errorsCount, String wrongChars, final String hiddenWordWithMask) {
+        return getHiddenWordText(hiddenWordWithMask) + "\n" +
             hangmanContent.getHangman(errorsCount) + "\n" +
             getErrorsLeftText(errorsCount) + "\n" +
             Constants.WRONG_LETTERS_TEXT + wrongChars + "\n" +

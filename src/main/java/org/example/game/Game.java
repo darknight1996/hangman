@@ -1,10 +1,10 @@
 package org.example.game;
 
 import org.example.constants.Constants;
-import org.example.dialog.Dialog;
-import org.example.dialog.impl.CharDialog;
-import org.example.model.HiddenWord;
 import org.example.content.GameContent;
+import org.example.dialog.Dialog;
+import org.example.dialog.impl.LetterDialog;
+import org.example.model.HiddenWord;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,18 +22,19 @@ public class Game {
     public void start() {
 
         while (true) {
-            final String guessCharText = gameContent.getGuessCharText(getErrorsCount(), wrongChars.toString());
-            final Dialog<Character> characterDialog = new CharDialog(guessCharText);
-            final char inputChar = characterDialog.input();
+            final String guessCharText = gameContent.getGuessCharText(getErrorsCount(), wrongChars.toString(),
+                    hiddenWord.getWordWithMask());
+            final Dialog<Character> letterDialog = new LetterDialog(guessCharText);
+            final char inputChar = letterDialog.input();
 
             tryToGuess(inputChar);
 
             if (isLost()) {
-                System.out.println(gameContent.getLostText(getErrorsCount()));
+                System.out.println(gameContent.getLostText(getErrorsCount(), hiddenWord.getWord()));
                 return;
             }
             if (isWon()) {
-                System.out.println(gameContent.getWonText(getErrorsCount()));
+                System.out.println(gameContent.getWonText(getErrorsCount(), hiddenWord.getWordWithMask()));
                 return;
             }
         }

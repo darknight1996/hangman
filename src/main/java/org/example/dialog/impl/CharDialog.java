@@ -10,7 +10,7 @@ public class CharDialog implements Dialog<Character> {
 
     private final String title;
     private final Scanner scanner = new Scanner(System.in);
-    private final Validator validator = new Validator();
+    protected final Validator validator = new Validator();
 
     public CharDialog(String title) {
         this.title = title;
