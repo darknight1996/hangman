@@ -9,17 +9,17 @@ public class HiddenWord {
 
     private final String word;
     private final Set<Character> guessedChars = new HashSet<>();
-    private final Set<Character> wrongChars = new HashSet<>();
 
     public HiddenWord(String word) {
         this.word = word;
     }
 
-    public void tryToGuess(char character) {
+    public boolean guessChar(char character) {
         if (word.indexOf(character) == -1) {
-            wrongChars.add(character);
+            return false;
         } else {
             guessedChars.add(character);
+            return true;
         }
     }
 
@@ -39,11 +39,4 @@ public class HiddenWord {
         return word;
     }
 
-    public Set<Character> getWrongChars() {
-        return wrongChars;
-    }
-
-    public int getErrorsCount() {
-        return wrongChars.size();
-    }
 }

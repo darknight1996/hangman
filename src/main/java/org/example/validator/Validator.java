@@ -2,11 +2,11 @@ package org.example.validator;
 
 public class Validator {
 
-    public boolean isValidChar(char c) {
+    public boolean isLetter(char c) {
         return Character.isLetter(c);
     }
 
-    public boolean isSingleLetter(String s) {
+    public boolean isSingleChar(String s) {
        return s.length() == 1;
     }
 }

@@ -1,17 +1,13 @@
-package org.example.render;
-
-import org.example.model.HiddenWord;
+package org.example.content;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class HangmanRenderer {
+public class HangmanContent {
 
     private final Map<Integer, Stage> errorsCountToStageMap;
-    private final HiddenWord hiddenWord;
 
-    public HangmanRenderer(HiddenWord hiddenWord) {
-        this.hiddenWord = hiddenWord;
+    public HangmanContent() {
         errorsCountToStageMap = new HashMap<>();
         initMap();
     }
@@ -24,8 +20,8 @@ public class HangmanRenderer {
         }
     }
 
-    public void render() {
-        System.out.println(errorsCountToStageMap.get(hiddenWord.getErrorsCount()).getContent());
+    public String getHangman(final int errorsCount) {
+        return errorsCountToStageMap.get(errorsCount).getContent();
     }
 
     public enum Stage {

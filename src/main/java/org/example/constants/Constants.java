@@ -7,8 +7,8 @@ public class Constants {
 
     public static final String HIDDEN_CHAR_MASK = "*";
 
-    public static final String START_COMMAND = "s";
-    public static final String EXIT_COMMAND = "e";
+    public static final char START_COMMAND = 's';
+    public static final char EXIT_COMMAND = 'e';
 
     public static final String YOU_WON_TEXT = "You won!";
     public static final String YOU_LOST_TEXT = "You lost!";
