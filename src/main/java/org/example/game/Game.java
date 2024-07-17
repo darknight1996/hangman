@@ -24,7 +24,7 @@ public class Game {
         while (true) {
             final String guessCharText = gameContent.getGuessCharText(getErrorsCount(), wrongChars.toString(),
                     hiddenWord.getWordWithMask());
-            final Dialog<Character> letterDialog = new LetterDialog(guessCharText);
+            final Dialog<Character> letterDialog = new LetterDialog(guessCharText, "error");
             final char inputChar = letterDialog.input();
 
             tryToGuess(inputChar);

@@ -2,7 +2,7 @@ package org.example.menu;
 
 import org.example.constants.Constants;
 import org.example.dialog.Dialog;
-import org.example.dialog.impl.CharDialog;
+import org.example.dialog.impl.CharacterDialog;
 import org.example.factory.ObjectFactory;
 import org.example.content.MenuContent;
 
@@ -16,7 +16,7 @@ public class Menu {
 
     public void start() {
         while (true) {
-            final Dialog<Character> characterDialog = new CharDialog(menuContent.getStartMenu());
+            final Dialog<Character> characterDialog = new CharacterDialog(menuContent.getStartMenu(), menuContent.getWrongCommand());
             final char inputChar = characterDialog.input();
 
             if (isExit(inputChar)) {

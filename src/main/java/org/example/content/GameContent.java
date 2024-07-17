@@ -1,7 +1,6 @@
 package org.example.content;
 
 import org.example.constants.Constants;
-import org.example.model.HiddenWord;
 
 public class GameContent {
 

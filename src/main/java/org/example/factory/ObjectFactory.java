@@ -27,8 +27,7 @@ public final class ObjectFactory {
     }
 
     public Menu getMenu() {
-        final MenuContent menuContent = getMenuContent();
-        return new Menu(menuContent);
+        return new Menu(getMenuContent());
     }
 
     private MenuContent getMenuContent() {

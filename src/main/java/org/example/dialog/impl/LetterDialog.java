@@ -1,22 +1,15 @@
 package org.example.dialog.impl;
 
-import org.example.constants.Constants;
+import org.example.validator.CharacterValidatorFactory;
 
-public class LetterDialog extends CharDialog {
+public class LetterDialog extends CharacterDialog {
 
-    public LetterDialog(String title) {
-        super(title);
+    public LetterDialog(String title, String errorMessage) {
+        super(
+                title,
+                errorMessage,
+                new CharacterValidatorFactory().getEngLetterValidator()
+        );
     }
 
-    @Override
-    public Character input() {
-        while (true) {
-            final char inputChar = super.input();
-            if (validator.isLetter(inputChar)) {
-                return inputChar;
-            } else {
-                System.out.println(Constants.INVALID_CHARACTER_TEXT);
-            }
-        }
-    }
 }
