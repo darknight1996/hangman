@@ -33,10 +33,10 @@ public abstract class AbstractDialog<T> implements Dialog<T> {
                 if (validator.test(input)) {
                     return input;
                 } else {
-                    System.out.println(errorMessage);
+                    System.err.println(errorMessage);
                 }
-            } catch (NumberFormatException e) {
-                System.out.println(errorMessage);
+            } catch (IllegalArgumentException e) {
+                System.err.println(errorMessage);
             }
         }
     }

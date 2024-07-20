@@ -25,7 +25,7 @@ public class Menu {
             } else if (isStart(inputChar)) {
                 objectFactory.getGame().start();
             } else {
-                System.out.println(WRONG_COMMAND_TEXT);
+                System.err.println(WRONG_COMMAND_TEXT);
             }
         }
     }
