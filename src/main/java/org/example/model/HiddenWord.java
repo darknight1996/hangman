@@ -1,11 +1,11 @@
 package org.example.model;
 
-import org.example.constants.Constants;
-
 import java.util.HashSet;
 import java.util.Set;
 
 public class HiddenWord {
+
+    public static final String HIDDEN_CHAR_MASK = "*";
 
     private final String word;
     private final Set<Character> guessedChars = new HashSet<>();
@@ -29,7 +29,7 @@ public class HiddenWord {
             if (guessedChars.contains(character)) {
                 sb.append(character);
             } else {
-                sb.append(Constants.HIDDEN_CHAR_MASK);
+                sb.append(HIDDEN_CHAR_MASK);
             }
         }
         return sb.toString();

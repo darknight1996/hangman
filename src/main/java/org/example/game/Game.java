@@ -1,6 +1,5 @@
 package org.example.game;
 
-import org.example.constants.Constants;
 import org.example.content.GameContent;
 import org.example.dialog.Dialog;
 import org.example.dialog.impl.LetterDialog;
@@ -10,6 +9,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Game {
+
+    private static final String INVALID_CHARACTER_TEXT = "Invalid character";
+    private static final int ERRORS_TO_LOSE = 6;
+
     private final HiddenWord hiddenWord;
     private final GameContent gameContent;
     private final Set<Character> wrongChars = new HashSet<>();
@@ -20,11 +23,14 @@ public class Game {
     }
 
     public void start() {
-
         while (true) {
-            final String guessCharText = gameContent.getGuessCharText(getErrorsCount(), wrongChars.toString(),
-                    hiddenWord.getWordWithMask());
-            final Dialog<Character> letterDialog = new LetterDialog(guessCharText, "error");
+            final String guessCharText = gameContent.getGuessCharText(
+                    getErrorsCount(),
+                    getErrorsLeft(),
+                    wrongChars.toString(),
+                    hiddenWord.getWordWithMask()
+            );
+            final Dialog<Character> letterDialog = new LetterDialog(guessCharText, INVALID_CHARACTER_TEXT);
             final char inputChar = letterDialog.input();
 
             tryToGuess(inputChar);
@@ -52,14 +58,18 @@ public class Game {
     }
 
     private boolean isLost() {
-        return wrongChars.size() == Constants.ERRORS_TO_LOSE;
+        return wrongChars.size() == ERRORS_TO_LOSE;
     }
 
     private boolean isWon() {
-        return !hiddenWord.getWordWithMask().contains(Constants.HIDDEN_CHAR_MASK);
+        return !hiddenWord.getWordWithMask().contains(HiddenWord.HIDDEN_CHAR_MASK);
     }
 
     private int getErrorsCount() {
         return wrongChars.size();
+    }
+
+    private int getErrorsLeft() {
+        return ERRORS_TO_LOSE - getErrorsCount();
     }
 }

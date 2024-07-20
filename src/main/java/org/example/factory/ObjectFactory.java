@@ -5,19 +5,12 @@ import org.example.menu.Menu;
 import org.example.model.HiddenWord;
 import org.example.content.GameContent;
 import org.example.content.HangmanContent;
-import org.example.content.MenuContent;
 import org.example.repository.WordsRepository;
 import org.example.repository.impl.WordsRepositoryInFile;
 import org.example.service.WordService;
 import org.example.service.impl.WordServiceDefaultImpl;
 
-public final class ObjectFactory {
-
-    private static final ObjectFactory objectFactory = new ObjectFactory();
-
-    public static ObjectFactory getInstance() {
-        return objectFactory;
-    }
+public class ObjectFactory {
 
     public Game getGame() {
         final HiddenWord hiddenWord = getHiddenWord();
@@ -27,11 +20,7 @@ public final class ObjectFactory {
     }
 
     public Menu getMenu() {
-        return new Menu(getMenuContent());
-    }
-
-    private MenuContent getMenuContent() {
-        return new MenuContent();
+        return new Menu();
     }
 
     private GameContent getGameContent() {
