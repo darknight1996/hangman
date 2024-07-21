@@ -14,11 +14,9 @@ public class WordsRepositoryInFile implements WordsRepository {
 
     @Override
     public List<String> getAll() {
-        final Scanner scanner;
         final List<String> words = new ArrayList<>();
 
-        try {
-            scanner = new Scanner(new File(DATA_FILE_PATH));
+        try (final Scanner scanner = new Scanner(new File(DATA_FILE_PATH))) {
             while (scanner.hasNext()) {
                 words.add(scanner.next());
             }
