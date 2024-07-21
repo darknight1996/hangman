@@ -11,7 +11,7 @@ public class GameContent {
 
     private final HangmanContent hangmanContent;
 
-    public GameContent(HangmanContent hangmanContent) {
+    public GameContent(final HangmanContent hangmanContent) {
         this.hangmanContent = hangmanContent;
     }
 

@@ -4,7 +4,7 @@ import org.example.validator.CharacterValidatorFactory;
 
 public class LetterDialog extends CharacterDialog {
 
-    public LetterDialog(String title, String errorMessage) {
+    public LetterDialog(final String title, final String errorMessage) {
         super(
                 title,
                 errorMessage,

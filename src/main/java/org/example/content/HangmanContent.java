@@ -77,7 +77,7 @@ public class HangmanContent {
 
         private final String content;
 
-        Stage(String content) {
+        Stage(final String content) {
             this.content = content;
         }
 

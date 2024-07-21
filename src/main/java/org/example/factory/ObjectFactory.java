@@ -13,10 +13,7 @@ import org.example.service.impl.WordServiceDefaultImpl;
 public class ObjectFactory {
 
     public Game getGame() {
-        final HiddenWord hiddenWord = getHiddenWord();
-        final GameContent gameContent = getGameContent();
-
-        return new Game(hiddenWord, gameContent);
+        return new Game(getHiddenWord(), getGameContent());
     }
 
     public Menu getMenu() {

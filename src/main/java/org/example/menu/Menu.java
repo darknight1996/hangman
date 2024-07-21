@@ -30,11 +30,11 @@ public class Menu {
         }
     }
 
-    private boolean isExit(char inputChar) {
+    private boolean isExit(final char inputChar) {
         return inputChar == EXIT_COMMAND;
     }
 
-    private boolean isStart(char inputChar) {
+    private boolean isStart(final char inputChar) {
         return inputChar == START_COMMAND;
     }
 

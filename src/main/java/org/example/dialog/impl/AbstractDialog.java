@@ -13,7 +13,8 @@ public abstract class AbstractDialog<T> implements Dialog<T> {
     private final Function<String, T> mapper;
     private final Predicate<T> validator;
 
-    public AbstractDialog(String title, String errorMessage, Function<String, T> mapper, Predicate<T> validator) {
+    public AbstractDialog(final String title, final String errorMessage, final Function<String, T> mapper,
+                          final Predicate<T> validator) {
         this.title = title;
         this.errorMessage = errorMessage;
         this.mapper = mapper;

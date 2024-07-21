@@ -10,11 +10,11 @@ public class HiddenWord {
     private final String word;
     private final Set<Character> guessedChars = new HashSet<>();
 
-    public HiddenWord(String word) {
+    public HiddenWord(final String word) {
         this.word = word;
     }
 
-    public boolean guessChar(char character) {
+    public boolean guessChar(final char character) {
         if (word.indexOf(character) == -1) {
             return false;
         } else {

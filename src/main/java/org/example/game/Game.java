@@ -17,7 +17,7 @@ public class Game {
     private final GameContent gameContent;
     private final Set<Character> wrongChars = new HashSet<>();
 
-    public Game(HiddenWord hiddenWord, GameContent gameContent) {
+    public Game(final HiddenWord hiddenWord, final GameContent gameContent) {
         this.hiddenWord = hiddenWord;
         this.gameContent = gameContent;
     }
@@ -47,7 +47,7 @@ public class Game {
 
     }
 
-    public void tryToGuess(char inputChar) {
+    public void tryToGuess(final char inputChar) {
         if (isWrongChar(inputChar)) {
             wrongChars.add(inputChar);
         }

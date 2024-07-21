@@ -10,7 +10,7 @@ public class WordServiceDefaultImpl implements WordService {
 
     private final WordsRepository wordsRepository;
 
-    public WordServiceDefaultImpl(WordsRepository wordsRepository) {
+    public WordServiceDefaultImpl(final WordsRepository wordsRepository) {
         this.wordsRepository = wordsRepository;
     }
 
