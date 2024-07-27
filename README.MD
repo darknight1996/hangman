@@ -5,7 +5,7 @@ _____
 - Maven 3.9+
 _____
 ## Task link
-https://zhukovsd.github.io/java-backend-learning-course/Projects/Hangman/
+https://zhukovsd.github.io/java-backend-learning-course/projects/hangman/
 _____
 ## How to run
 Run this command from root directory of the project.
