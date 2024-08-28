@@ -1,19 +1,19 @@
 package org.example.dialog.impl;
 
 import org.example.dialog.Dialog;
+import org.example.mapper.Mapper;
 import org.example.validator.Validator;
 
 import java.util.Scanner;
-import java.util.function.Function;
 
 public abstract class AbstractDialog<T> implements Dialog<T> {
 
     private final String title;
     private final String errorMessage;
-    private final Function<String, T> mapper;
+    private final Mapper<String, T> mapper;
     private final Validator<T> validator;
 
-    public AbstractDialog(final String title, final String errorMessage, final Function<String, T> mapper,
+    public AbstractDialog(final String title, final String errorMessage, final Mapper<String, T> mapper,
                           final Validator<T> validator) {
         this.title = title;
         this.errorMessage = errorMessage;
@@ -30,14 +30,14 @@ public abstract class AbstractDialog<T> implements Dialog<T> {
             final String inputString = scanner.nextLine();
 
             try {
-                final T input = mapper.apply(inputString);
+                final T input = mapper.map(inputString);
                 if (validator.validate(input)) {
                     return input;
                 } else {
                     System.err.println(errorMessage);
                 }
             } catch (IllegalArgumentException e) {
-                System.err.println(errorMessage);
+                System.err.println(e.getMessage());
             }
         }
     }

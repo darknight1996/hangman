@@ -7,7 +7,7 @@ import org.example.factory.ObjectFactory;
 public class Menu {
 
     private static final String START_GAME_TEXT = "Type [s] to start the game or [e] to exit";
-    private static final String INVALID_INPUT_TEXT = "Input must be single character";
+    private static final String INVALID_INPUT_TEXT = "Input must be a single character";
     private static final String WRONG_COMMAND_TEXT = "Wrong command";
 
     private static final char START_COMMAND = 's';

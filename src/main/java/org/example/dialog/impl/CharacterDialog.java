@@ -1,6 +1,6 @@
 package org.example.dialog.impl;
 
-import org.example.mapper.CharacterMapperFactory;
+import org.example.mapper.impl.CharacterMapper;
 import org.example.validator.Validator;
 
 public class CharacterDialog extends AbstractDialog<Character> {
@@ -10,7 +10,7 @@ public class CharacterDialog extends AbstractDialog<Character> {
     }
 
     protected CharacterDialog(final String title, final String errorMessage, final Validator<Character> validator) {
-        super(title, errorMessage, new CharacterMapperFactory().getMapper(), validator);
+        super(title, errorMessage, new CharacterMapper(), validator);
     }
 
 }
