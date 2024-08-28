@@ -26,4 +26,5 @@ public class WordsRepositoryInFile implements WordsRepository {
 
         return words;
     }
+
 }

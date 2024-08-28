@@ -10,4 +10,5 @@ public class Main {
         final Menu menu = objectFactory.getMenu();
         menu.start();
     }
+
 }

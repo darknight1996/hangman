@@ -20,4 +20,5 @@ public class WordServiceDefaultImpl implements WordService {
         final Random random = new Random();
         return words.get(random.nextInt(words.size()));
     }
+
 }

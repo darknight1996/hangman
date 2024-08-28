@@ -1,10 +1,10 @@
 package org.example.factory;
 
+import org.example.content.GameContent;
+import org.example.content.HangmanContent;
 import org.example.game.Game;
 import org.example.menu.Menu;
 import org.example.model.HiddenWord;
-import org.example.content.GameContent;
-import org.example.content.HangmanContent;
 import org.example.repository.WordsRepository;
 import org.example.repository.impl.WordsRepositoryInFile;
 import org.example.service.WordService;
@@ -39,4 +39,5 @@ public class ObjectFactory {
     private WordsRepository getWordsRepository() {
         return new WordsRepositoryInFile();
     }
+
 }

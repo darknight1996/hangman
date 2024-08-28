@@ -85,4 +85,5 @@ public class HangmanContent {
             return content;
         }
     }
+
 }

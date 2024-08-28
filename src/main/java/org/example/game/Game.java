@@ -72,4 +72,5 @@ public class Game {
     private int getErrorsLeft() {
         return ERRORS_TO_LOSE - getErrorsCount();
     }
+
 }

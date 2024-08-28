@@ -1,20 +1,20 @@
 package org.example.dialog.impl;
 
 import org.example.dialog.Dialog;
+import org.example.validator.Validator;
 
 import java.util.Scanner;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public abstract class AbstractDialog<T> implements Dialog<T> {
 
     private final String title;
     private final String errorMessage;
     private final Function<String, T> mapper;
-    private final Predicate<T> validator;
+    private final Validator<T> validator;
 
     public AbstractDialog(final String title, final String errorMessage, final Function<String, T> mapper,
-                          final Predicate<T> validator) {
+                          final Validator<T> validator) {
         this.title = title;
         this.errorMessage = errorMessage;
         this.mapper = mapper;
@@ -31,7 +31,7 @@ public abstract class AbstractDialog<T> implements Dialog<T> {
 
             try {
                 final T input = mapper.apply(inputString);
-                if (validator.test(input)) {
+                if (validator.validate(input)) {
                     return input;
                 } else {
                     System.err.println(errorMessage);
@@ -41,4 +41,5 @@ public abstract class AbstractDialog<T> implements Dialog<T> {
             }
         }
     }
+
 }

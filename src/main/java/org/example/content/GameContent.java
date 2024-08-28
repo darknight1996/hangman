@@ -44,4 +44,5 @@ public class GameContent {
     private String getHiddenWordText(final String word) {
         return HIDDEN_WORD_TEXT + word;
     }
+
 }
