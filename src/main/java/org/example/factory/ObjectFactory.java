@@ -8,7 +8,7 @@ import org.example.model.HiddenWord;
 import org.example.repository.WordsRepository;
 import org.example.repository.impl.WordsRepositoryInFile;
 import org.example.service.WordService;
-import org.example.service.impl.WordServiceDefaultImpl;
+import org.example.service.impl.RandomWordService;
 
 public class ObjectFactory {
 
@@ -29,11 +29,11 @@ public class ObjectFactory {
     }
 
     private HiddenWord getHiddenWord() {
-        return new HiddenWord(getWordService().getRandomWord());
+        return new HiddenWord(getWordService().getWord());
     }
 
     private WordService getWordService() {
-        return new WordServiceDefaultImpl(getWordsRepository());
+        return new RandomWordService(getWordsRepository());
     }
 
     private WordsRepository getWordsRepository() {

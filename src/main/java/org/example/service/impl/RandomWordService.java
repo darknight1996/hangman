@@ -6,16 +6,16 @@ import org.example.service.WordService;
 import java.util.List;
 import java.util.Random;
 
-public class WordServiceDefaultImpl implements WordService {
+public class RandomWordService implements WordService {
 
     private final WordsRepository wordsRepository;
 
-    public WordServiceDefaultImpl(final WordsRepository wordsRepository) {
+    public RandomWordService(final WordsRepository wordsRepository) {
         this.wordsRepository = wordsRepository;
     }
 
     @Override
-    public String getRandomWord() {
+    public String getWord() {
         final List<String> words = wordsRepository.getAll();
         final Random random = new Random();
         return words.get(random.nextInt(words.size()));
