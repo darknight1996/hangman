@@ -10,6 +10,8 @@ import org.example.repository.impl.WordsRepositoryInFile;
 import org.example.service.WordService;
 import org.example.service.impl.RandomWordService;
 
+import java.io.File;
+
 public class ObjectFactory {
 
     public Game getGame() {
@@ -37,7 +39,9 @@ public class ObjectFactory {
     }
 
     private WordsRepository getWordsRepository() {
-        return new WordsRepositoryInFile();
+        final String dataFilePath = "src" + File.separator + "main" + File.separator + "resources" +
+                File.separator + "words.txt";
+        return new WordsRepositoryInFile(dataFilePath);
     }
 
 }

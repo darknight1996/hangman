@@ -10,13 +10,17 @@ import java.util.Scanner;
 
 public class WordsRepositoryInFile implements WordsRepository {
 
-    private static final String DATA_FILE_PATH = "src/main/resources/words.txt";
+    private final String dataFilePath;
+
+    public WordsRepositoryInFile(final String dataFilePath) {
+        this.dataFilePath = dataFilePath;
+    }
 
     @Override
     public List<String> getAll() {
         final List<String> words = new ArrayList<>();
 
-        try (final Scanner scanner = new Scanner(new File(DATA_FILE_PATH))) {
+        try (final Scanner scanner = new Scanner(new File(dataFilePath))) {
             while (scanner.hasNext()) {
                 words.add(scanner.next());
             }
